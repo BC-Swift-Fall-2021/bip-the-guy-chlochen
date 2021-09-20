@@ -12,13 +12,13 @@ class ViewController: UIViewController {
 
     
     var audioPlayer: AVAudioPlayer!
-    
+    var imagePickerController = UIImagePickerController()
      
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        imagePickerController.delegate = self
     }
 
     func playSound(name: String) {
@@ -61,12 +61,10 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-            print("You clicked Photo Library")
-            // TODO: add code to open the photo library
+            self.accessPhotoLibrary()
         }
         let cameraAction = UIAlertAction(title:"Camera",style: .default) {(_) in
-            print("You clicked Camera")
-            // TODO; add code to access the Camera
+            self.accessCamera()
         }
         let cancelAction = UIAlertAction(title:"Cancel",style:.cancel,handler:nil)
          
@@ -80,3 +78,30 @@ class ViewController: UIViewController {
 }
 
 
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            imageView.image = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func accessPhotoLibrary() {
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func accessCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+        } else {
+            showAlert(title: "Camera not Available", message: "There is no camera available on this device")
+        }
+    }
+}
