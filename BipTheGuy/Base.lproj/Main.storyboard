@@ -23,15 +23,15 @@
                                     <outletCollection property="gestureRecognizers" destination="IJA-m1-Ull" appends="YES" id="Z15-1V-N81"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJO-s4-tXX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJO-s4-tXX">
                                 <rect key="frame" x="157" y="820" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="YZ1-zd-Z7Z"/>
                                     <constraint firstAttribute="height" constant="30" id="nq4-Xg-YEE"/>
                                 </constraints>
-                                <state key="normal" title="Punch"/>
+                                <state key="normal" image="camera.on.rectangle" catalog="system"/>
                                 <connections>
-                                    <action selector="punchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="25Y-CR-8Ho"/>
+                                    <action selector="photoOrCameraPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hKC-Kd-PIf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,6 +61,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
         <image name="clown" width="1786" height="1779"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
