@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     var audioPlayer: AVAudioPlayer!
     
-    
+     
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
